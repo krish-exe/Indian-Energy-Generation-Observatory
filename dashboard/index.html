@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>India Energy Observatory</title>
+  <meta name="description" content="Electricity generation by source and generating-unit outages in India, built from official CEA and Grid-India reports.">
+  <link rel="stylesheet" href="assets/app.css">
+  <!-- Vendored: echarts 5.5.1 (Apache-2.0) and SheetJS xlsx 0.18.5 (Apache-2.0), from npm via jsDelivr -->
+  <script src="assets/vendor/echarts.min.js" defer></script>
+  <script src="assets/vendor/xlsx.full.min.js" defer></script>
+  <script src="assets/app.js" defer></script>
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <div>
+        <div class="brand-name">India Energy Observatory</div>
+        <div class="brand-sub" id="window-label">Official CEA &amp; Grid-India data</div>
+      </div>
+    </div>
+    <nav class="tabs" aria-label="Sections">
+      <a href="#overview">Overview</a>
+      <a href="#mix">Sustainable vs fossil</a>
+      <a href="#renewables">Renewables compared</a>
+      <a href="#outages">Outages</a>
+      <a href="#supply">Supply &amp; demand</a>
+      <a href="#stations">Station explorer</a>
+      <a href="#data">Data &amp; downloads</a>
+      <a href="#method">Methodology</a>
+    </nav>
+    <button class="theme-btn" id="theme-btn" type="button" aria-label="Switch colour theme">Theme: auto</button>
+  </header>
+  <main id="app" tabindex="-1">
+    <p class="loading">Loading data…</p>
+  </main>
+  <div class="tooltip-note" id="toast" role="status" aria-live="polite"></div>
+  <footer class="foot">
+    Data: Central Electricity Authority (npp.gov.in, gen-re.cea.gov.in) and Grid Controller of India (grid-india.in).
+    Every number traces back to a source file listed in <a href="#data">Data &amp; downloads</a>.
+  </footer>
+</body>
+</html>

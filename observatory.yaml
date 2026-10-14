@@ -1,0 +1,21 @@
+# Build configuration. `python -m observatory refresh` reads this file.
+# The window is pinned so a refresh always asks the sources for the same reports.
+window:
+  start: 2025-10-13   # 365 days: one full seasonal cycle, ~370k core records
+  end: 2026-10-12
+
+paths:
+  data: data            # raw downloads, manifest, warehouse (relative to repo root, on D:)
+  dashboard_data: dashboard/data
+
+http:
+  user_agent: "IndianEnergyObservatory/1.0 (open-data research; github.com/krish-exe/Indian-Energy-Generation-Observatory)"
+  min_interval_s: 0.8   # per host, polite fetching
+  timeout_s: 90
+  retries: 4
+
+sources:
+  npp_dgr:
+    reports: [2, 10, 17]    # SR-2 station/unit generation, SR-10 outages, SR-17 fuel totals
+  cea_re_daily: {}
+  grid_india_psp: {}

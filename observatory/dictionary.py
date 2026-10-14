@@ -1,0 +1,117 @@
+"""Table and column descriptions. Used for the Excel 'about' sheets and docs/data_dictionary.md."""
+
+TABLES = {
+    "generation_daily": (
+        "CORE TABLE. One record per generating entity per day, covering every energy source: conventional "
+        "stations (CEA DGR Sub-report 2, gross), inter-state-connected renewable stations (CEA daily RE report, "
+        "ISGS sheet, net) and state-embedded renewable totals (CEA daily RE report, State-Wise sheet, net)."),
+    "unit_daily": "Unit-level daily generation and outage status for thermal and nuclear units (CEA DGR Sub-report 2).",
+    "outage_snapshot": ("Daily list of coal, lignite and nuclear units under outage, as published "
+                        "(CEA DGR Sub-report 10), with derived reason class and cause group."),
+    "outage_events": ("Outage events reconstructed by linking daily snapshots on (unit, outage start). "
+                      "Durations are given only when the report states a return time."),
+    "fuel_daily": "CEA's own all-India fuel totals (Sub-report 17): monitored capacity, program and actual generation.",
+    "grid_region_daily": ("Grid-India daily PSP report, region level: demand met, energy met, hydro/wind/solar "
+                          "generation, energy shortage, peak demand, generation outage MW."),
+    "grid_mix_daily": "Grid-India daily PSP report, source-wise gross generation by region (includes renewables).",
+    "state_supply_daily": "Grid-India daily PSP report, state power supply position: peak demand met, energy met, shortage.",
+    "grid_15min": "Grid-India daily PSP report, 15-minute all-India SCADA generation by source and demand met.",
+    "re_availability_daily": (
+        "SOLAR & WIND AVAILABILITY. Grid-India daily REMC report: installed vs maximum available solar and wind "
+        "capacity by region and state. Installed minus available = capacity not available that day (plant outages, "
+        "maintenance or evacuation constraints). Aggregate, not per plant: no official per-plant outage list exists."),
+    "grid_events": (
+        "SOLAR & WIND OUTAGE EVENTS. Every grid disturbance / incident in Grid-India's monthly reports, with start, "
+        "end, generation lost and narrative; involves_re marks events that took solar, wind or other renewable "
+        "plants offline (usually by loss of the evacuation line, not a fault inside the plant)."),
+    "re_zero_output_episodes": (
+        "SOLAR OUTAGE PROXY (derived). Runs of consecutive days on which an inter-state solar station reported zero "
+        "generation in CEA's daily RE report. A solar plant generates on every day it is available, so these mark "
+        "days it was out. Derived by this project, not an official outage record."),
+    "entities": "One row per station / entity in generation_daily with its latest attributes.",
+    "source_files": "Every source file the build used: official URL, download time, size and SHA-256.",
+    "data_gaps": "Reports that could not be downloaded or parsed. Missing data is never estimated.",
+    "validation": "Results of cross-checks between reports.",
+}
+
+COLUMNS = {
+    "record_id": "Sequential record number in this release",
+    "date": "Reporting date (the day the generation/outage refers to), YYYY-MM-DD",
+    "record_type": "conventional_station | re_station_isgs | re_state_embedded",
+    "entity_id": "Stable identifier: state code + station name slug (re- prefix for renewable stations)",
+    "entity_name": "Station name as published",
+    "station_id": "Station identifier (state code + name slug)",
+    "station": "Station name as published",
+    "unit_id": "Unit identifier: station_id + unit number",
+    "unit_no": "Unit number as published",
+    "region": "Grid region (Northern, Western, Southern, Eastern, North-Eastern)",
+    "state_code": "Two-letter state / UT code (reference/states.csv)",
+    "state": "State / UT name (normalised)",
+    "sector": "Ownership sector as published (Central / State / Private ...)",
+    "owner": "Owner as published (renewable stations only)",
+    "fuel": "COAL, LIGNITE, GAS, NAPHTHA, DIESEL, NUCLEAR, HYDRO, SOLAR, WIND, HYBRID, OTHER_RES, HYDRO_IMPORT",
+    "category": "renewable | non_renewable | nuclear | import (large hydro counted as renewable)",
+    "plant_type": "Plant type label as published by CEA",
+    "capacity_mw": "Monitored / operational capacity on that day (MW)",
+    "program_mu": "Planned (programmed) generation for the day, million units (GWh)",
+    "actual_mu": "Actual generation for the day, million units (GWh)",
+    "ytd_program_mu": "Planned generation from 1 April to date (MU)",
+    "ytd_actual_mu": "Actual generation from 1 April to date (MU)",
+    "cap_under_outage_mw": "Capacity reported under outage (MW)",
+    "coal_stock_days": "Coal stock at the station, in days of consumption",
+    "basis": "gross (as generated) or net (after auxiliary consumption) - never mix in one total",
+    "capacity_factor": "actual_mu / (capacity_mw x 24 h), computed",
+    "quality_flag": "Empty when plausible; otherwise why the value looks wrong (value kept as reported)",
+    "source_file_id": "Key into source_files: source/report/date",
+    "outage_start": "Outage start date-time as reported",
+    "sync_time": "Return to service (synchronisation) time when reported",
+    "return_time": "Return to service time when reported",
+    "remarks": "Remarks as published",
+    "reason": "Outage reason as published",
+    "planned_mw": "MW under planned maintenance",
+    "forced_major_mw": "MW under forced outage (major)",
+    "forced_minor_mw": "MW under forced outage (minor)",
+    "other_mw": "MW under other maintenance",
+    "unavailable_mw": "planned + forced major + forced minor + other (MW)",
+    "outage_type": "Largest MW column for the row; returned_same_day when all MW are zero",
+    "reason_class": "Class from the reason text (reference/outage_reasons.csv)",
+    "cause_group": "planned | forced_equipment | fuel_supply | commercial | long_term_or_retired | regulatory_or_other",
+    "end_status": "observed (return time reported) | inferred (dropped off the list) | ongoing (still out)",
+    "duration_h": "Hours from outage start to reported return (observed events only)",
+    "unavailable_hours_in_window": "Hours of the outage inside the build window (lower bound for inferred ends)",
+    "gross_mu": "Gross generation, million units",
+    "section": "REMC report section: remc_regional, remc_ists, remc_state, non_remc_regional, non_remc_ists, non_remc_state",
+    "scope_type": "all_india | region | state",
+    "scope": "Region or state name",
+    "installed_mw": "Installed capacity monitored by the REMC (MW)",
+    "available_mw": "Maximum available capacity during the day (MW)",
+    "unavailable_mw": "installed_mw - available_mw (MW not available that day)",
+    "unavailable_pct": "unavailable_mw / installed_mw x 100",
+    "max_generation_mw": "Day's maximum generation (MW)",
+    "schedule_mu": "Scheduled generation (MU)",
+    "cuf_pct": "Capacity utilisation factor for the day as published (%)",
+    "event_id": "Identifier of the event in this release",
+    "month": "Month of the Grid-India report (YYYY-MM)",
+    "seq": "Position of the event in that month's report",
+    "category": "Grid-India event category: GD-1..GD-5 (grid disturbance), GI-1/GI-2 (grid incident), NEAR MISS",
+    "start": "Event start date-time",
+    "end": "Event end (restoration) date-time",
+    "generation_loss_mw": "Generation lost in the event (MW)",
+    "load_loss_mw": "Load lost in the event (MW)",
+    "involves_solar": "Narrative mentions solar generation",
+    "involves_wind": "Narrative mentions wind generation",
+    "involves_hybrid": "Narrative mentions hybrid (solar + wind) plants",
+    "involves_bess": "Narrative mentions battery storage (BESS)",
+    "involves_re": "Event involves solar, wind or other renewable plants",
+    "summary": "The report's sentence on generation loss (or the start of the narrative)",
+    "narrative": "Event description as published (first 1,500 characters)",
+    "episode_id": "Identifier of the zero-output episode",
+    "days": "Number of consecutive report days in the episode",
+    "ongoing_at_window_end": "Still at zero on the last day of the window",
+    "source_file_ids": "Source files behind the episode (first three)",
+    "source": "Grid-India source category: COAL, LIGNITE, HYDRO, NUCLEAR, GAS_NAPHTHA_DIESEL, RES, TOTAL",
+    "energy_met_mu": "Energy demand met (MU)",
+    "energy_shortage_mu": "Energy not supplied because of shortage (MU) - unmet demand, not consumer interruptions",
+    "max_demand_met_mw": "Maximum demand met during the day (MW)",
+    "shortage_at_max_demand_mw": "Shortage at the time of maximum demand (MW)",
+}

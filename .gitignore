@@ -1,0 +1,13 @@
+# environment and caches
+.venv/
+.cache/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# raw downloads, manifest and warehouse: rebuilt from the official sources by `python -m observatory refresh`
+/data/
+
+# local tool state (machine-specific)
+.claude/
+.impeccable/

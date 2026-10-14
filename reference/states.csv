@@ -1,0 +1,39 @@
+state_code,state,region,aliases
+CH,Chandigarh,Northern,CHANDIGARH
+DL,Delhi,Northern,DELHI
+HR,Haryana,Northern,HARYANA
+HP,Himachal Pradesh,Northern,HIMACHAL PRADESH|HP
+JK,Jammu and Kashmir,Northern,JAMMU AND KASHMIR|JAMMU & KASHMIR|J&K|J&K(UT) & LADAKH(UT)|J&K (UT) & LADAKH (UT)|JAMMU AND KASHMIR (UT) AND LADAKH (UT)
+LA,Ladakh,Northern,LADAKH
+PB,Punjab,Northern,PUNJAB
+RJ,Rajasthan,Northern,RAJASTHAN
+UP,Uttar Pradesh,Northern,UTTAR PRADESH|UP
+UK,Uttarakhand,Northern,UTTARAKHAND|UTTRAKHAND|UTTARANCHAL
+CG,Chhattisgarh,Western,CHHATTISGARH|CHHATISGARH|CHATTISGARH|CHHATTISHGARH
+GJ,Gujarat,Western,GUJARAT
+MP,Madhya Pradesh,Western,MADHYA PRADESH|MP
+MH,Maharashtra,Western,MAHARASHTRA
+GA,Goa,Western,GOA
+DD,Dadra and Nagar Haveli and Daman and Diu,Western,DAMAN & DIU|DAMAN AND DIU|DADRA & NAGAR HAVELI|DADRA AND NAGAR HAVELI|DNHDDPDCL|DNH & DD|DADRA & NAGAR HAVELI AND DAMAN & DIU
+AP,Andhra Pradesh,Southern,ANDHRA PRADESH
+TG,Telangana,Southern,TELANGANA|TELENGANA
+KA,Karnataka,Southern,KARNATAKA
+KL,Kerala,Southern,KERALA
+TN,Tamil Nadu,Southern,TAMIL NADU
+PY,Puducherry,Southern,PUDUCHERRY|PONDICHERRY
+LD,Lakshadweep,Southern,LAKSHADWEEP
+BR,Bihar,Eastern,BIHAR
+JH,Jharkhand,Eastern,JHARKHAND|JHARKHNAD
+OD,Odisha,Eastern,ODISHA|ORISSA|ODHISA
+WB,West Bengal,Eastern,WEST BENGAL
+SK,Sikkim,Eastern,SIKKIM
+DV,DVC,Eastern,DVC|DAMODAR VALLEY CORPORATION
+AN,Andaman and Nicobar Islands,Eastern,ANDAMAN & NICOBAR|ANDAMAN AND NICOBAR|A & N ISLANDS|ANDAMAN & NICOBAR ISLANDS
+AR,Arunachal Pradesh,North-Eastern,ARUNACHAL PRADESH
+AS,Assam,North-Eastern,ASSAM
+MN,Manipur,North-Eastern,MANIPUR
+ML,Meghalaya,North-Eastern,MEGHALAYA
+MZ,Mizoram,North-Eastern,MIZORAM
+NL,Nagaland,North-Eastern,NAGALAND
+TR,Tripura,North-Eastern,TRIPURA
+BT,Bhutan,Import,BHUTAN
