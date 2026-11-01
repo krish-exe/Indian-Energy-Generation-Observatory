@@ -8,7 +8,8 @@ outages, built **only from official reports**:
   [gen-re.cea.gov.in](https://gen-re.cea.gov.in/reports).
 - **Grid Controller of India (Grid-India):** daily Power Supply Position report, daily REMC (renewable)
   report and monthly grid disturbance reports via [grid-india.in](https://grid-india.in/en/reports/daily-psp-report).
-
+- **IEEE DataPort Dataset: ** https://ieee-dataport.org/documents/indian-energy-generation-observatory-multi-source-dataset-energy-generation-power-supply
+  
 The current release covers **13 Oct 2025 – 12 Oct 2026** (365 days, one full seasonal cycle).
 
 | Table | Rows | What it is |
